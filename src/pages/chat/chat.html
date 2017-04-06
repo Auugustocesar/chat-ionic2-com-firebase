@@ -7,13 +7,13 @@
 <ion-list>
   <ion-item>
     <ion-label floating>Mensagem</ion-label>
-    <ion-input type="text" [(ngModel)]="mensagem"></ion-input>
+    <ion-input type="text" [(ngModel)]="mensagem" (keypress)="eventEnter($event.keyCode)"></ion-input>
   </ion-item>
   <ion-item>
     <button ion-button (click)="enviar()">Enviar</button>
   </ion-item>
   <ion-item *ngFor="let item of lista | async">
-    <p>{{item.texto}}</p>
+    <span>{{item.texto}}</span>
     <ion-note item-right>
       {{item.data | date: 'HH:mm'}}
     </ion-note>

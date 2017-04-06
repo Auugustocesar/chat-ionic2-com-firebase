@@ -18,17 +18,24 @@ export class ChatPage {
   mensagem: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public af: AngularFire) {
-    this.lista = af.database.list('https://chat-ionic-c0185.firebaseio.com/chat');
+    this.lista = af.database.list('/chat');
   }
 
-  enviar(){
+  enviar() {
     let m = {
       texto: this.mensagem,
-      data: new Date()
+      data: new Date().toISOString()
     };
+    console.log(m)
     this.lista.push(m).then(() => {
       this.mensagem = "";
     })
+  }
+
+  eventEnter(event) {
+    if (event === 13) {
+      this.enviar()
+    }
   }
 
   ionViewDidLoad() {
