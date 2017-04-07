@@ -4,7 +4,6 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-<ion-list>
   <ion-item>
     <ion-label floating>Mensagem</ion-label>
     <ion-input type="text" [(ngModel)]="mensagem" (keypress)="eventEnter($event.keyCode)"></ion-input>
@@ -12,11 +11,15 @@
   <ion-item>
     <button ion-button (click)="enviar()">Enviar</button>
   </ion-item>
-  <ion-item *ngFor="let item of lista | async">
-    <span>{{item.texto}}</span>
-    <ion-note item-right>
-      {{item.data | date: 'HH:mm'}}
-    </ion-note>
-  </ion-item>
-</ion-list>
+  <ion-list no-lines>
+    <ion-item *ngFor="let item of lista | async">
+      <span>{{item.texto}}</span>
+      <ion-note item-right>
+        {{item.data | date: 'HH:mm'}}
+      </ion-note>
+      <button ion-button icon-only item-right clear color="danger" (click)="excluir(item.$key)">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { ToastController } from 'ionic-angular';
 
-/*
-  Generated class for the Chat page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-chat',
   templateUrl: 'chat.html'
@@ -17,7 +12,11 @@ export class ChatPage {
   lista: FirebaseListObservable<any>;
   mensagem: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public af: AngularFire) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public af: AngularFire,
+    public toastCtrl: ToastController) {
     this.lista = af.database.list('/chat');
   }
 
@@ -36,6 +35,20 @@ export class ChatPage {
     if (event === 13) {
       this.enviar()
     }
+  }
+
+  excluir(id) {
+    this.lista.remove(id).then(() => {
+      this.showToast()
+    });
+  }
+
+  showToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Excluido com Sucesso!',
+      duration: 30000
+    });
+    toast.present();
   }
 
   ionViewDidLoad() {
