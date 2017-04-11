@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
 
+import { NavController } from 'ionic-angular';
+
 import { HomePage } from '../home/home';
 import { ListaCarroPage } from '../lista-carro/lista-carro';
 import { ContactPage } from '../contact/contact';
 import { ChatPage } from '../chat/chat';
+import { AuthData } from "../../providers/auth-data";
 
 @Component({
-  templateUrl: 'tabs.html'
+  selector: 'page-tabs',
+  templateUrl: 'tabs.html',
+  providers: [AuthData]
 })
 export class TabsPage {
   // this tells the tabs component which Pages
@@ -16,7 +21,7 @@ export class TabsPage {
   tab3Root: any = ContactPage;
   tab4Root: any = HomePage;
 
-  constructor() {
+  constructor(public navCtrl: NavController) {
 
   }
 }

@@ -10,7 +10,8 @@ import { EmailValidator } from "../../validators/email";
 
 @Component({
   selector: 'page-reset-password',
-  templateUrl: 'reset-password.html'
+  templateUrl: 'reset-password.html',
+   providers: [AuthData]
 })
 export class ResetPasswordPage {
   public resetPasswordForm;

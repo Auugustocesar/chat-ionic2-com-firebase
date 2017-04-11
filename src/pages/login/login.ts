@@ -7,13 +7,14 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from "../../providers/auth-data";
 import { SignupPage } from "../signup/signup";
-import { HomePage } from "../home/home";
+import { TabsPage } from "../tabs/tabs";
 import { ResetPasswordPage } from "../reset-password/reset-password";
 import { EmailValidator } from '../../validators/email';
 
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html'
+  templateUrl: 'login.html',
+  providers: [AuthData]
 })
 export class LoginPage {
   public loginForm;
@@ -40,7 +41,7 @@ export class LoginPage {
     } else {
       this.authData.logar(this.loginForm.value.email, this.loginForm.value.password).then(authData => {
         this.loading.dismiss().then(() => {
-          this.navCtrl.setRoot(HomePage);
+          this.navCtrl.setRoot(TabsPage);
         });
       }, error => {
         this.loading.dismiss().then(() => {
