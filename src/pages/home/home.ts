@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
-import { NavController, NavParams } from 'ionic-angular';
+import { ProfilePage } from "../profile/profile";
 import { ChatPage } from "../chat/chat";
 
 @Component({
@@ -8,18 +9,9 @@ import { ChatPage } from "../chat/chat";
   templateUrl: 'home.html'
 })
 export class HomePage {
-  private rootPage;
-  private homePage;
-  private chatPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.rootPage = HomePage;
-    this.homePage = HomePage;
-    this.chatPage = ChatPage;
-  }
+  constructor(public navCtrl: NavController) { }
 
-  openPage(page){
-    this.rootPage = page;
-  }
+  goToProfile() { this.navCtrl.push(ProfilePage); }
 
 }

@@ -7,12 +7,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { AuthData } from "../../providers/auth-data";
 import { EmailValidator } from "../../validators/email";
-import { TabsPage } from "../tabs/tabs";
+import { HomePage } from "../home/home";
 
 @Component({
   selector: 'page-signup',
-  templateUrl: 'signup.html',
-  providers: [AuthData]
+  templateUrl: 'signup.html'
 })
 export class SignupPage {
   public signupForm;
@@ -36,7 +35,7 @@ export class SignupPage {
     } else {
       this.authData.cadastrar(this.signupForm.value.email, this.signupForm.value.password).then(() => {
         this.loading.dismiss().then(() => {
-          this.navCtrl.setRoot(TabsPage);
+          this.navCtrl.setRoot(HomePage);
         });
       }, (error) => {
         this.loading.dismiss().then(() => {

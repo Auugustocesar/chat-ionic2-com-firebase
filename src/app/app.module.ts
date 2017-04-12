@@ -1,55 +1,58 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { NgModule } from '@angular/core';
+import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { ContactPage } from '../pages/contact/contact';
+import { BrowserModule } from "@angular/platform-browser";
+
+//Import Pages
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from "../pages/login/login";
+import { ProfilePage } from "../pages/profile/profile";
 import { ResetPasswordPage } from "../pages/reset-password/reset-password";
 import { SignupPage } from "../pages/signup/signup";
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+
+import { ContactPage } from '../pages/contact/contact';
+import { TabsPage } from '../pages/tabs/tabs';
 import { ChatPage } from "../pages/chat/chat";
 import { ListaCarroPage } from '../pages/lista-carro/lista-carro';
 import { EditaCarroPage } from "../pages/edita-carro/edita-carro";
-import { AuthData } from '../providers/auth-data'
 
+
+//Import Providers
+import { GetProviders } from "./app.providers";
 
 
 @NgModule({
   declarations: [
     MyApp,
+    HomePage,
     LoginPage,
+    ProfilePage,
     ResetPasswordPage,
     SignupPage,
     ContactPage,
-    HomePage,
     TabsPage,
     ChatPage,
     ListaCarroPage,
     EditaCarroPage
   ],
   imports: [
+    BrowserModule,
     IonicModule.forRoot(MyApp)    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    HomePage,
     LoginPage,
+    ProfilePage,
     ResetPasswordPage,
     SignupPage,
     ContactPage,
-    HomePage,
     TabsPage,
     ChatPage,
     ListaCarroPage,
     EditaCarroPage
   ],
-  providers: [
-    StatusBar,
-    AuthData,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+  providers: GetProviders()
 })
 export class AppModule {}

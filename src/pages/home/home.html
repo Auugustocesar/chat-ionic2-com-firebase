@@ -1,24 +1,22 @@
 <ion-header>
   <ion-navbar>
-    <ion-menu [content]="mycontent">
-
-      <ion-content>
-        <ion-list>
-          <button ion-item menuClose (click)="openPage(homePage)">
-                Home
-            </button>
-          <button ion-item menuClose (click)="openPage(chatPage)">
-                Cats
-            </button>
-          <button ion-item menuClose (click)="openPage(dogsPage)">
-                Dogs
-            </button>
-        </ion-list>
-      </ion-content>
-
-    </ion-menu>
+    <ion-title>
+      Home Page
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goToProfile()">
+        <ion-icon name="person"></ion-icon>
+        </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
+<ion-content padding>
+  <button ion-button block color="primary" (click)="goToCreate()">
+    Create a new Event
+  </button>
 
-<ion-nav #mycontent [root]="rootPage"></ion-nav>
+  <button ion-button block color="primary" (click)="goToList()">
+    See your events
+  </button>
+</ion-content>
