@@ -8,6 +8,8 @@ import { ToastController } from 'ionic-angular';
   templateUrl: 'chat.html'
 })
 
+'https://github.com/angular/angularfire2/blob/master/docs/Auth-with-Ionic2.md'
+
 export class ChatPage {
   lista: FirebaseListObservable<any>;
   mensagem: string;
@@ -21,6 +23,7 @@ export class ChatPage {
   }
 
   enviar() {
+    
     let m = {
       texto: this.mensagem,
       data: new Date().toISOString()

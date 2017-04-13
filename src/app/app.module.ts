@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { BrowserModule } from "@angular/platform-browser";
+import { AngularFireModule } from 'angularfire2';
 
 //Import Pages
 import { HomePage } from '../pages/home/home';
@@ -20,6 +21,13 @@ import { EditaCarroPage } from "../pages/edita-carro/edita-carro";
 //Import Providers
 import { GetProviders } from "./app.providers";
 
+export const firebaseConfig = {
+  apiKey: "AIzaSyCJGyF5DBnJxwNqSnHm2_3lq2h9sCFHS1U",
+  authDomain: "chat-ionic-c0185.firebaseapp.com",
+  databaseURL: "https://chat-ionic-c0185.firebaseio.com",
+  storageBucket: "chat-ionic-c0185.appspot.com",
+  messagingSenderId: "1036057523817"
+};
 
 @NgModule({
   declarations: [
@@ -37,7 +45,8 @@ import { GetProviders } from "./app.providers";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)    
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,4 +64,4 @@ import { GetProviders } from "./app.providers";
   ],
   providers: GetProviders()
 })
-export class AppModule {}
+export class AppModule { }

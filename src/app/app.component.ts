@@ -28,7 +28,7 @@ export class MyApp {
       messagingSenderId: "1036057523817"
     });
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      this.zone.run( () => {
+      this.zone.run(() => {
         if (!user) {
           this.rootPage = LoginPage;
           unsubscribe();

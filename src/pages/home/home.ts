@@ -14,4 +14,6 @@ export class HomePage {
 
   goToProfile() { this.navCtrl.push(ProfilePage); }
 
+  goToChat() { this.navCtrl.push(ChatPage); }
+
 }
